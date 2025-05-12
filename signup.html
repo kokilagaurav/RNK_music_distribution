@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - RNK Music Distribution</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+        .signup-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #f50057;
+        }
+        .terms {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="logo">
+            <h1>RNK Music Distribution</h1>
+            <p>Create your account</p>
+        </div>
+        <form id="signupForm" onsubmit="handleSignup(event)">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required minlength="6">
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required minlength="6">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="artist-name">Artist/Band Name</label>
+                <input type="text" id="artist-name" name="artist-name" required>
+            </div>
+            <div class="form-group">
+                <label for="genre">Primary Genre</label>
+                <select id="genre" name="genre" required>
+                    <option value="">Select Genre</option>
+                    <option value="pop">Pop</option>
+                    <option value="rock">Rock</option>
+                    <option value="hiphop">Hip Hop</option>
+                    <option value="edm">EDM</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Create Account</button>
+            <div class="links" style="text-align: center; margin-top: 20px;">
+                <p>Already have an account? <a href="login.html" style="color: #ff4081; text-decoration: none;">Login</a></p>
+            </div>
+            <p class="terms">By signing up, you agree to our Terms of Service and Privacy Policy</p>
+        </form>
+    </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+            }
+        });
+
+        async function handleSignup(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Creating Account...';
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value.toLowerCase(), // Ensure email is lowercase
+                password: document.getElementById('password').value,
+                phone: document.getElementById('phone').value,
+                artistName: document.getElementById('artist-name').value,
+                genre: document.getElementById('genre').value
+            };
+
+            try {
+                // First check if email exists
+                const checkEmail = await fetch(`http://localhost:5000/api/auth/check-email/${formData.email}`);
+                const emailCheck = await checkEmail.json();
+                
+                if (emailCheck.exists) {
+                    alert('An account with this email already exists. Please login instead.');
+                    window.location.href = '/login.html';
+                    return;
+                }
+
+                const response = await fetch('http://localhost:5000/api/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    localStorage.setItem('token', data.token);
+                    alert('Account created successfully!');
+                    window.location.href = 'dashboard.html'; // Changed from /dashboard.html
+                } else {
+                    alert(data.message || 'Error creating account. Please try again.');
+                }
+            } catch (err) {
+                console.error('Signup error:', err);
+                alert('Server error. Please check if the backend server is running on port 5000');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Create Account';
+            }
+        }
+    </script>
+</body>
+</html>

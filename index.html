@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNK Music Distribution</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+        }
+        .nav-links a.button {
+            background: #ff4081;
+            color: white;
+            border-radius: 25px;
+        }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3') center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        .hero-content {
+            max-width: 800px;
+        }
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #ff4081;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,64,129,0.4);
+        }
+        .features {
+            padding: 100px 20px;
+            background: white;
+        }
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .feature-card h3 {
+            margin: 20px 0;
+            color: #ff4081;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <h1>RNK Music</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="login.html" class="button">Login</a>
+                <a href="signup.html" class="button">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Distribute Your Music Worldwide</h1>
+            <p>Get your music on Spotify, Apple Music, YouTube Music, and 150+ streaming platforms worldwide</p>
+            <a href="signup.html" class="cta-button">Start Distribution Now</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <img src="path-to-icon" alt="Globe Icon" style="width: 64px;">
+                <h3>Global Distribution</h3>
+                <p>Reach millions of listeners across 150+ platforms worldwide</p>
+            </div>
+            <div class="feature-card">
+                <img src="path-to-icon" alt="Money Icon" style="width: 64px;">
+                <h3>Keep 100% Rights</h3>
+                <p>Maintain full control of your music and revenue</p>
+            </div>
+            <div class="feature-card">
+                <img src="path-to-icon" alt="Dashboard Icon" style="width: 64px;">
+                <h3>Analytics Dashboard</h3>
+                <p>Track your streams and earnings in real-time</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
