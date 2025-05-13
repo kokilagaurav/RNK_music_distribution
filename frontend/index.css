@@ -65,7 +65,7 @@ body {
 
 .navbar.scrolled {
     padding: 0.7rem 1rem;
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(86, 147, 239, 0.289);
     box-shadow: 0 5px 20px rgba(126, 87, 194, 0.08);
 }
 
@@ -115,7 +115,7 @@ body {
 
 .nav-links a.button {
     background: var(--primary);
-    color: white;
+    color: rgb(255, 255, 255);
     border-radius: 25px;
     padding: 8px 20px;
     box-shadow: 0 4px 12px rgba(126, 87, 194, 0.2);
