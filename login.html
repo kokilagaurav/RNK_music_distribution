@@ -4,64 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - RNK Music Distribution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #ff4081;
+            --primary-dark: #f50057;
+            --dark: #333;
+            --light: #f5f5f5;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #f6f8fd, #f5f5f5);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .login-container {
+            width: 100%;
             max-width: 400px;
-            margin: 100px auto;
-            padding: 30px;
+            margin: 20px;
+            padding: 40px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
         .logo {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        .logo h1 {
+            color: var(--dark);
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .logo p {
+            color: #666;
+            font-size: 16px;
         }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            position: relative;
         }
         label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 14px;
         }
         input {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        input:focus {
+            border-color: var(--primary);
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255,64,129,0.1);
         }
         .login-btn {
             width: 100%;
             padding: 15px;
-            background: #ff4081;
+            background: var(--primary);
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 12px;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         .login-btn:hover {
-            background: #f50057;
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,64,129,0.4);
         }
         .links {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 25px;
+        }
+        .links p {
+            margin: 10px 0;
+            color: #666;
         }
         .links a {
-            color: #ff4081;
+            color: var(--primary);
             text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
         .links a:hover {
-            text-decoration: underline;
+            color: var(--primary-dark);
+        }
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 10px;
+                padding: 30px;
+            }
         }
     </style>
 </head>
