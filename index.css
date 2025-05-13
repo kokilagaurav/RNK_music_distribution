@@ -1,26 +1,42 @@
-/* Color scheme variables based on reference site */
+/* Refined color scheme variables for better harmony */
 :root {
-  --primary: #8445e7; /* Purple primary color */
-  --primary-light: #a96cff;
-  --primary-dark: #6a2dc9;
-  --secondary: #0edfee; /* Cyan secondary color */
-  --secondary-light: #60f4ff;
-  --secondary-dark: #00b7c5;
-  --accent: #fe19ff; /* Pink accent color */
-  --accent-light: #ff70ff;
-  --accent-dark: #c000c1;
-  --text-dark: #2a2a2a;
+  /* Main colors */
+  --primary: #7e57c2; /* Softer purple as primary */
+  --primary-light: #b085f5;
+  --primary-dark: #4d2c91;
+  
+  /* Complementary colors */
+  --secondary: #2eccfa; /* Lighter blue that pairs with purple */
+  --secondary-light: #64e0ff;
+  --secondary-dark: #00a0c7;
+  
+  /* Accent for call-to-actions and highlights */
+  --accent: #ff5bbd; /* Softer pink that harmonizes with purple */
+  --accent-light: #ff8ad0;
+  --accent-dark: #d4309a;
+  
+  /* Neutral colors */
+  --text-dark: #2d2d2d;
+  --text-medium: #555555;
   --text-light: #ffffff;
-  --text-gray: #777777;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  
+  /* Background colors */
   --bg-light: #ffffff;
-  --bg-dark: #131313;
-  --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  --bg-off-white: #faf9fe; /* Slight purple tint to white */
+  --bg-dark: #191631; /* Dark purple-tinted background instead of pure black */
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--secondary));
   --gradient-accent: linear-gradient(135deg, var(--accent), var(--primary));
+  --gradient-dark: linear-gradient(135deg, var(--bg-dark), #292443);
+  
+  /* Other variables remain unchanged */
   --animation-speed: 0.3s;
   --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   --transition-smooth: cubic-bezier(0.65, 0, 0.35, 1);
-  --box-shadow-hover: 0 15px 30px rgba(132, 69, 231, 0.2);
-  --box-shadow-active: 0 5px 15px rgba(132, 69, 231, 0.15);
+  --box-shadow-hover: 0 15px 30px rgba(126, 87, 194, 0.2);
+  --box-shadow-active: 0 5px 15px rgba(126, 87, 194, 0.15);
 }
 
 html {
@@ -34,7 +50,7 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background: var(--bg-light);
-    background-image: linear-gradient(to bottom, var(--bg-light) 0%, #f9f7ff 100%);
+    background-image: linear-gradient(to bottom, var(--bg-light) 0%, var(--bg-off-white) 100%);
 }
 
 .navbar {
@@ -50,7 +66,7 @@ body {
 .navbar.scrolled {
     padding: 0.7rem 1rem;
     background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px rgba(126, 87, 194, 0.08);
 }
 
 .nav-content {
@@ -95,7 +111,7 @@ body {
     background: var(--primary);
     color: white;
     border-radius: 25px;
-    box-shadow: 0 4px 12px rgba(132, 69, 231, 0.2);
+    box-shadow: 0 4px 12px rgba(126, 87, 194, 0.2);
     transform-origin: center;
     transition: all 0.3s var(--transition-bounce);
     position: relative;
@@ -104,12 +120,12 @@ body {
 
 .nav-links a.button:hover {
     background: var(--primary-dark);
-    box-shadow: 0 6px 16px rgba(132, 69, 231, 0.25);
+    box-shadow: 0 6px 16px rgba(126, 87, 194, 0.25);
     transform: scale(1.05);
 }
 
 .hero {
-    background: linear-gradient(rgba(19, 19, 19, 0.7), rgba(19, 19, 19, 0.8)), url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3') center/cover;
+    background: linear-gradient(rgba(25, 22, 49, 0.8), rgba(25, 22, 49, 0.85)), url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3') center/cover;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -139,12 +155,15 @@ body {
     z-index: 2;
     padding: 40px;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s var(--transition-bounce), 
                 box-shadow 0.3s var(--transition-smooth);
+    text-align: center; /* Ensure content is centered */
+    margin: 0 auto; /* Properly center the container */
+    width: 100%; /* Ensure the container takes full width up to max-width */
 }
 
 .hero-content:hover {
@@ -157,11 +176,13 @@ body {
     margin-bottom: 20px;
     text-transform: uppercase;
     color: var(--text-light);
-    background: linear-gradient(to right, #ffffff, var(--secondary));
+    background: linear-gradient(to right, #ffffff, var(--secondary-light));
     -webkit-background-clip: text;
     color: transparent;
     background-size: 200% auto;
     animation: textShine 3s linear infinite;
+    text-align: center; /* Explicitly center the text */
+    width: 100%; /* Ensure text takes full width */
 }
 
 @keyframes textShine {
@@ -180,13 +201,13 @@ body {
 .cta-button {
     display: inline-block;
     padding: 15px 40px;
-    background: var(--gradient);
+    background: var(--gradient-primary);
     color: white;
     text-decoration: none;
     border-radius: 30px;
     font-size: 1.2em;
     transition: all 0.3s ease;
-    box-shadow: 0 6px 18px rgba(14, 223, 238, 0.25);
+    box-shadow: 0 8px 20px rgba(46, 204, 250, 0.3);
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -195,7 +216,7 @@ body {
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 22px rgba(14, 223, 238, 0.35);
+    box-shadow: 0 12px 28px rgba(46, 204, 250, 0.4);
 }
 
 .cta-button::before {
@@ -252,7 +273,7 @@ body {
 
 .features {
     padding: 100px 20px;
-    background: white;
+    background: var(--bg-light);
 }
 
 .section-header {
@@ -267,7 +288,7 @@ body {
 
 .section-header p {
     font-size: 1.2em;
-    color: #666;
+    color: var(--text-medium);
 }
 
 .features-grid {
@@ -281,7 +302,7 @@ body {
 .feature-card {
     text-align: center;
     padding: 40px 20px;
-    background: white;
+    background: var(--bg-light);
     border-radius: 10px;
     transition: all 0.3s ease;
     position: relative;
@@ -289,6 +310,7 @@ body {
     perspective: 1000px;
     transition: all 0.4s var(--transition-bounce);
     overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
 }
 
 .feature-card:hover {
@@ -335,7 +357,7 @@ body {
 }
 
 .feature-card p {
-    color: #666;
+    color: var(--text-medium);
     font-size: 1em;
     margin-bottom: 20px;
 }
@@ -356,7 +378,7 @@ body {
 }
 
 .stats-section {
-    background: var(--bg-dark);
+    background: var(--gradient-dark);
     color: var(--text-light);
     padding: 80px 20px;
 }
@@ -373,7 +395,7 @@ body {
 .stat-item {
     position: relative;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 15px;
@@ -384,7 +406,7 @@ body {
 
 .stat-item:hover {
     transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .stat-item h2 {
@@ -396,7 +418,7 @@ body {
 
 .stat-item i {
     font-size: 2.5em;
-    color: var(--secondary);
+    color: var(--secondary-light);
 }
 
 .stat-item::after {
@@ -406,7 +428,7 @@ body {
     left: 0;
     width: 0;
     height: 3px;
-    background: var(--gradient);
+    background: var(--gradient-primary);
     transition: width 0.5s ease;
 }
 
@@ -416,7 +438,7 @@ body {
 
 .about-section {
     padding: 120px 20px;
-    background: #f9f9f9;
+    background: var(--bg-off-white);
     position: relative;
     overflow: hidden;
 }
@@ -444,7 +466,7 @@ body {
 }
 
 .about-content h3 {
-    color: #333;
+    color: var(--text-dark);
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 30px;
@@ -457,7 +479,7 @@ body {
 }
 
 .benefit-item {
-    background: white;
+    background: var(--bg-light);
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -482,12 +504,12 @@ body {
 
 .company-info p {
     margin-bottom: 20px;
-    color: #666;
+    color: var(--text-medium);
 }
 
 .services-section {
     padding: 120px 20px;
-    background: white;
+    background: var(--bg-light);
     position: relative;
 }
 
@@ -507,7 +529,7 @@ body {
 }
 
 .service-card {
-    background: #f8f9fa;
+    background: var(--bg-off-white);
     padding: 35px 25px;
     border-radius: 20px;
     text-align: center;
@@ -541,12 +563,12 @@ body {
 
 .service-card h3 {
     font-size: 1.2em;
-    color: #333;
+    color: var(--text-dark);
     margin: 10px 0;
 }
 
 .service-card p {
-    color: #666;
+    color: var(--text-medium);
     font-size: 0.9em;
     line-height: 1.5;
 }
@@ -557,14 +579,14 @@ body {
 }
 
 .how-to-sell {
-    background: var(--gradient);
+    background: var(--gradient-primary);
     padding: 120px 20px;
     position: relative;
     color: white;
 }
 
 .how-to-sell h2 {
-    color: white;
+    color: var(--text-light);
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 20px;
@@ -574,7 +596,7 @@ body {
     text-align: center;
     max-width: 700px;
     margin: 0 auto 60px;
-    color: rgba(255,255,255,0.9);
+    color: var(--text-muted);
     font-size: 1.1rem;
 }
 
@@ -745,7 +767,7 @@ body {
     left: 0;
     width: 40px;
     height: 3px;
-    background: var(--primary);
+    background: var(--accent);
 }
 
 .footer-links {
@@ -764,7 +786,7 @@ body {
 }
 
 .footer-links a:hover {
-    color: var(--secondary);
+    color: var(--secondary-light);
     padding-left: 5px;
 }
 
@@ -787,7 +809,7 @@ body {
 }
 
 .social-links a:hover {
-    background: var(--primary);
+    background: var(--gradient-primary);
     transform: translateY(-3px);
 }
 
@@ -900,7 +922,7 @@ body {
 
 .visualizer-bar {
     width: 3px;
-    background: linear-gradient(to top, var(--accent), var(--secondary));
+    background: linear-gradient(to top, var(--accent-light), var(--primary-light));
     border-radius: 2px;
     animation: sound-bar 1.5s ease-in-out infinite alternate;
 }
@@ -967,7 +989,7 @@ body {
 
 @keyframes highlight-counter {
     0%, 100% { color: var(--secondary); }
-    50% { color: var(--accent); }
+    50% { color: var(--accent-light); }
 }
 
 /* Image lazy loading */
