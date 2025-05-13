@@ -4,251 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RNK Music Distribution</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        .navbar {
-            position: fixed;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            margin-left: 20px;
-            padding: 8px 15px;
-            transition: all 0.3s ease;
-        }
-        .nav-links a.button {
-            background: #ff4081;
-            color: white;
-            border-radius: 25px;
-        }
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3') center/cover;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0 20px;
-        }
-        .hero-content {
-            max-width: 800px;
-        }
-        .hero h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        .hero p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: #ff4081;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 1.2em;
-            transition: all 0.3s ease;
-        }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255,64,129,0.4);
-        }
-        .features {
-            padding: 100px 20px;
-            background: white;
-        }
-        .features-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .feature-card {
-            text-align: center;
-            padding: 40px 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .feature-card h3 {
-            margin: 20px 0;
-            color: #ff4081;
-        }
-        .stats-section {
-            background: #000;
-            color: white;
-            padding: 80px 20px;
-        }
-        .stats-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            text-align: center;
-        }
-        .stat-item h2 {
-            font-size: 3em;
-            margin: 20px 0;
-            color: #ff4081;
-        }
-        .stat-item i {
-            font-size: 2.5em;
-            color: #ff4081;
-        }
-        .about-section {
-            padding: 100px 20px;
-            background: #000;
-            color: white;
-        }
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .about-content h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: white;
-        }
-        .about-content h3 {
-            font-size: 1.8em;
-            margin-bottom: 40px;
-            color: #ff4081;
-        }
-        .benefits-list {
-            margin: 40px 0;
-        }
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            gap: 15px;
-        }
-        .benefit-item i {
-            color: #ff4081;
-            font-size: 1.2em;
-            margin-top: 5px;
-        }
-        .company-info {
-            margin-top: 40px;
-            line-height: 1.8;
-        }
-        .company-info p {
-            margin-bottom: 20px;
-            color: #ccc;
-        }
-        .services-section {
-            padding: 80px 20px;
-            background: #fff;
-        }
-        .services-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        .service-card {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .service-card i {
-            font-size: 2.5em;
-            color: #00ff94;
-            margin-bottom: 20px;
-        }
-        .how-to-sell {
-            background: #000;
-            color: white;
-            padding: 80px 20px;
-        }
-        .steps-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-        .step-card {
-            text-align: center;
-            padding: 20px;
-        }
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: #00ff94;
-            color: #000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-weight: bold;
-        }
-        .partners-section {
-            background: #000;
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
-        .partners-grid {
-            max-width: 1200px;
-            margin: 40px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            align-items: center;
-        }
-        .partner-logo {
-            max-width: 120px;
-            filter: brightness(0.9);
-            transition: all 0.3s ease;
-        }
-        .partner-logo:hover {
-            filter: brightness(1);
-            transform: translateY(-3px);
-        }
-        .all-partners {
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 40px;
-            line-height: 1.8;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -273,24 +29,42 @@
             <p>Get your music on Spotify, Apple Music, YouTube Music, and 150+ streaming platforms worldwide</p>
             <a href="signup.html" class="cta-button">Start Distribution Now</a>
         </div>
+        <div class="hero-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,176C960,171,1056,181,1152,170.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
     </section>
 
     <section class="features" id="features">
+        <div class="section-header">
+            <h2>Why Choose RNK Music</h2>
+            <p>We offer the best tools and services to help your music reach global audiences</p>
+        </div>
         <div class="features-grid">
             <div class="feature-card">
-                <img src="path-to-icon" alt="Globe Icon" style="width: 64px;">
+                <div class="feature-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
                 <h3>Global Distribution</h3>
                 <p>Reach millions of listeners across 150+ platforms worldwide</p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="feature-card">
-                <img src="path-to-icon" alt="Money Icon" style="width: 64px;">
+                <div class="feature-icon">
+                    <i class="fas fa-copyright"></i>
+                </div>
                 <h3>Keep 100% Rights</h3>
                 <p>Maintain full control of your music and revenue</p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="feature-card">
-                <img src="path-to-icon" alt="Dashboard Icon" style="width: 64px;">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
                 <h3>Analytics Dashboard</h3>
                 <p>Track your streams and earnings in real-time</p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -310,7 +84,7 @@
             <div class="stat-item">
                 <i class="fas fa-users"></i>
                 <h2>35993+</h2>
-                <p>Partners Using ST Digital</p>
+                <p>Partners Using RNK music distribution</p>
             </div>
         </div>
     </section>
@@ -341,29 +115,30 @@
                 </div>
 
                 <div class="company-info">
-                    <p>ST Digital is World's fastest growing Music Distribution Company and also the first digital distribution company to provide free service in the digital economy.</p>
-                    <p>ST Digital is a full-service digital music distribution company, was launched in 2012 and has its presence in US, Australia, Bangladesh, India, and Nepal. We have over 150+ stores worldwide, which allows us to provide you a wide range of audiences for your music. We deliver your songs across multiple formats- Singles, EPS, Albums, Pre-order.</p>
+                    <p>RNK music distribution is World's fastest growing Music Distribution Company and also the first digital distribution company to provide free service in the digital economy.</p>
+                    <p>RNK music distribution is a full-service digital music distribution company, was launched in 2012 and has its presence in US, Australia, Bangladesh, India, and Nepal. We have over 150+ stores worldwide, which allows us to provide you a wide range of audiences for your music. We deliver your songs across multiple formats- Singles, EPS, Albums, Pre-order.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="services-section" id="services">
+        <h2 class="section-title">Free Plan, include EVERYTHING YOU NEED!</h2>
         <div class="services-grid">
             <div class="service-card">
-                <i class="fas fa-infinity"></i>
+                <i class="fas fa-fire text-danger"></i>
                 <h3>REALLY UNLIMITED</h3>
-                <p>Really unlimited and free. Distribute unlimited releases without limits</p>
+                <p>Really unlimited and free. Distribute unlimited albums AND artists!</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-store"></i>
                 <h3>All Digital Music Stores</h3>
-                <p>Distribute your music worldwide on 150+ Platforms at no cost. FOREVER!</p>
+                <p>Distribute your music widely on +150 Platforms at no cost (list here)</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-barcode"></i>
                 <h3>ISRC and UPC Codes</h3>
-                <p>Get your ISRC and UPC codes for free in one click!</p>
+                <p>Get your ISRC and UPC codes for free, or use your own</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-tag"></i>
@@ -371,14 +146,34 @@
                 <p>Distribute your music under your own music label name</p>
             </div>
             <div class="service-card">
-                <i class="fas fa-file-alt"></i>
-                <h3>Metadata and Credits</h3>
-                <p>Credit all your contributors so everyone gets their credit that deserves</p>
+                <i class="fas fa-sliders-h"></i>
+                <h3>Metadatas and Credits</h3>
+                <p>Credit all your collaborators so everyone can collect their incomes</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-star"></i>
                 <h3>Exclusive Services</h3>
-                <p>Pre-save, ringtone distribution, lyrics exclusive promotion tools</p>
+                <p>Pre-save, ringtones distribution, lyrics, exclusive promotion tools...</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-exchange-alt"></i>
+                <h3>Transfer your music</h3>
+                <p>Transfer music already release through other distributors to save big and earn more from every listen</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Keep your royalties</h3>
+                <p>Don't share your earnings, become a Pro and keep 100% of your sales royalties</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-music"></i>
+                <h3>Cover song distribution</h3>
+                <p>Release and distribute your cover songs quickly and easily ensuring you include all necessary UK and US licensing requirements.</p>
+            </div>
+            <div class="service-card">
+                <i class="fab fa-youtube"></i>
+                <h3>YouTube content ID</h3>
+                <p>Our YouTube content ID service makes sure you get paid when other people use your music in their YouTube videos.</p>
             </div>
         </div>
     </section>
@@ -411,28 +206,131 @@
     </section>
 
     <section class="partners-section">
-        <h2>OUR PARTNERS</h2>
-        <div class="partners-grid">
-            <img src="path-to-apple-music.png" alt="Apple Music" class="partner-logo">
-            <img src="path-to-tiktok.png" alt="TikTok" class="partner-logo">
-            <img src="path-to-facebook.png" alt="Facebook" class="partner-logo">
-            <img src="path-to-youtube-music.png" alt="YouTube Music" class="partner-logo">
-            <img src="path-to-amazon-music.png" alt="Amazon Music" class="partner-logo">
-            <img src="path-to-netease.png" alt="NetEase" class="partner-logo">
-            <!-- Add more partner logos as needed -->
+        <h2>Our Partners</h2>
+        <div class="featured-partners">
+            <div class="featured-partner">
+                <img src="assets/spotify-logo.png" alt="Spotify" class="featured-logo">
+            </div>
+            <div class="featured-partner">
+                <img src="assets/youtube-music-logo.png" alt="YouTube Music" class="featured-logo">
+            </div>
+            <div class="featured-partner">
+                <img src="assets/amazon-music-logo.png" alt="Amazon Music" class="featured-logo">
+            </div>
+            <div class="featured-partner">
+                <img src="assets/apple-music-logo.png" alt="Apple Music" class="featured-logo">
+            </div>
+            <div class="featured-partner">
+                <img src="assets/tiktok-logo.png" alt="TikTok" class="featured-logo">
+            </div>
         </div>
-        <div class="all-partners">
-            Apple Music, Spotify, YouTube Music, Facebook/Instagram, SoundCloud, TikTok, Deezer, 
-            Tidal, Netease Cloud Music, Anghami, Hungama, Beatport, 7Digital, Amazon Entertainment, 
-            Anghami Video, Apple Karaoke, Apple Video, AudibleMagic, AWA, Bmat, Boomplay, Boomplay 
-            Video, Digital Stores, Dreamus Company (FLO), Facebook Fingerprinting, Facebook Video 
-            Fingerprinting, Feed.FM melody, it2y, Gracenote, Hungama Video, iHeartRadio, iMusica, iTunes 
-            Music Store, Jaxsta Music, JioSaavn, Joox, KKBox, Kuack Media, Licxd, LINE Music, LyricFind, 
-            MediaMarkt, Microsoft (Xbox, Zune), MixCloud, Music in Ayoba, MixUpload, Music Worx, 
-            MusikHolics, Musika, Napster, Nuuday A/S, Pandora, Peloton, Phononet, Pretzel Rocks, Qobuz, 
-            Resso, Rexly Music Videos, Shazam, Tencent, TIM Music TouchTunes / PlayNetwork, Trebel Music, 
-            Triller, VK Music, Xite, Yandex Music, Yandex.Video, YouTube Content ID, YouTube Video, Zvuk
+
+        <div class="partners-grid">
+            <div class="partner-logo">7Digital</div>
+            <div class="partner-logo">Amazon</div>
+            <div class="partner-logo">Anghami</div>
+            <div class="partner-logo">Audible Magic - Rights360</div>
+            <div class="partner-logo">AWA</div>
+            <div class="partner-logo">Bmat</div>
+            <div class="partner-logo">Boomplay</div>
+            <div class="partner-logo">Deezer</div>
+            <div class="partner-logo">Dreamus Company (FLO)</div>
+            <div class="partner-logo">Facebook Audio Library</div>
+            <div class="partner-logo">Facebook Fingerprinting</div>
+            <div class="partner-logo">Facebook Video</div>
+            <div class="partner-logo">fizy</div>
+            <div class="partner-logo">Genie Music</div>
+            <div class="partner-logo">Gracenote</div>
+            <div class="partner-logo">Hungama</div>
+            <div class="partner-logo">iHeartRadio</div>
+            <div class="partner-logo">iMusica / Claro SA</div>
+            <div class="partner-logo">JioSaavn</div>
+            <div class="partner-logo">Joox</div>
+            <div class="partner-logo">KkBox</div>
+            <div class="partner-logo">Kuack Media</div>
+            <div class="partner-logo">Lickd</div>
+            <div class="partner-logo">NAVER VIBE</div>
+            <div class="partner-logo">NetEase Cloud Music</div>
+            <div class="partner-logo">Pandora</div>
+            <div class="partner-logo">Peloton</div>
+            <div class="partner-logo">Pretzel Rocks</div>
+            <div class="partner-logo">Qobuz</div>
+            <div class="partner-logo">SoundCloud</div>
+            <div class="partner-logo">Taobao</div>
+            <div class="partner-logo">Tencent</div>
+            <div class="partner-logo">TIDAL</div>
+            <div class="partner-logo">TikTok Music</div>
+            <div class="partner-logo">TouchTunes</div>
+            <div class="partner-logo">United Media Agency (UMA)</div>
+            <div class="partner-logo">Xite</div>
+            <div class="partner-logo">Yandex Music</div>
+            <div class="partner-logo">YouTube Music & Content ID</div>
         </div>
     </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>RNK Music</h3>
+                <p>The ultimate music distribution platform for independent artists worldwide.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Music Street, Suite 456</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@rnkmusic.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 RNK Music Distribution. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.add('fade-in');
+            });
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
