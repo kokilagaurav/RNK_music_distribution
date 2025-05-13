@@ -77,6 +77,12 @@ body {
     align-items: center;
 }
 
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .nav-links a {
     color: var(--text-dark);
     text-decoration: none;
@@ -111,17 +117,21 @@ body {
     background: var(--primary);
     color: white;
     border-radius: 25px;
+    padding: 8px 20px;
     box-shadow: 0 4px 12px rgba(126, 87, 194, 0.2);
     transform-origin: center;
     transition: all 0.3s var(--transition-bounce);
-    position: relative;
-    overflow: hidden;
 }
 
 .nav-links a.button:hover {
     background: var(--primary-dark);
     box-shadow: 0 6px 16px rgba(126, 87, 194, 0.25);
     transform: scale(1.05);
+}
+
+/* Remove the underline effect for buttons */
+.nav-links a.button::before {
+    display: none;
 }
 
 .logo {
@@ -195,6 +205,7 @@ body {
     color: var(--text-light);
     background: linear-gradient(to right, #ffffff, var(--secondary-light));
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     background-size: 200% auto;
     animation: textShine 3s linear infinite;
