@@ -1,19 +1,42 @@
+@media screen and (max-width: 992px) {
+    .hero-content {
+        width: 95%;
+        padding: 30px;
+    }
+
+    .partners-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media screen and (max-width: 768px) {
     .nav-content {
         flex-direction: column;
-        padding: 1rem;
+        padding: 0.5rem;
     }
 
     .nav-links {
-        flex-direction: column;
-        width: 100%;
-        gap: 1rem;
-        padding: 1rem 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
     }
 
-    .nav-links a {
-        width: 100%;
-        text-align: center;
+    .nav-links a.button {
+        width: auto;
+        min-width: 120px;
+        margin: 5px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .hero-content {
+        padding: 25px;
     }
 
     .hero-content h1 {
@@ -24,17 +47,28 @@
     .hero-content p {
         font-size: 1rem;
         text-align: center;
+        line-height: 1.4;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
     }
 
     .features-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
         padding: 1rem;
     }
 
     .stats-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
         flex-direction: column;
-        gap: 2rem;
     }
 
     .about-content {
@@ -62,6 +96,16 @@
         gap: 1rem;
     }
 
+    .logo-partner {
+        height: 80px;
+        padding: 15px;
+    }
+
+    .logo-partner img {
+        max-width: 100px;
+        max-height: 50px;
+    }
+
     .footer-container {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -74,8 +118,22 @@
 }
 
 @media screen and (max-width: 480px) {
+    .nav-links a.button {
+        width: calc(50% - 20px);
+        min-width: unset;
+    }
+
+    .hero-content {
+        padding: 20px;
+    }
+
     .hero-content h1 {
         font-size: 1.75rem;
+    }
+
+    .cta-button {
+        width: 100%;
+        text-align: center;
     }
 
     .featured-partners {
@@ -84,5 +142,26 @@
 
     .partners-grid {
         grid-template-columns: 1fr;
+    }
+
+    .logo-partner {
+        height: 70px;
+    }
+
+    .logo-partner img {
+        max-width: 90px;
+        max-height: 45px;
+    }
+
+    .service-card {
+        padding: 20px 15px;
+    }
+
+    .footer-container {
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
     }
 }
