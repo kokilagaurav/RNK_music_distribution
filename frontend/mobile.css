@@ -197,3 +197,16 @@
         justify-content: center;
     }
 }
+
+@media screen and (min-width: 769px) {
+    .nav-toggle {
+        display: none !important;
+    }
+    .nav-links {
+        display: flex !important;
+        flex-direction: row !important;
+        opacity: 1 !important;
+        max-height: none !important;
+        pointer-events: auto !important;
+    }
+}

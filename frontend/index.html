@@ -24,17 +24,17 @@
                 <img src="./images/rnk_music_resized_50x50.jpg" alt="logo" class="nav-logo" style="max-width: 100%; height: auto;" onerror="this.onerror=null; this.src='https://via.placeholder.com/50x50?text=RNK';">
                 <h1><a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" style="color: #4d2c91; font-family: inherit; text-decoration: none;">RNK Music</a></h1>
             </div>
+            <!-- Add nav-toggle button here -->
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="nav-links">
-                <button class="menu-btn" id="menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
                 <a href="#features" class="button">Features</a>
                 <a href="#about" class="button">About</a>                
                 <a href="#services" class="button">Services</a>
                 <a href="#pricing" class="button" onclick="alert('Coming Soon')">Pricing</a>
                 <a href="https://music.rnkmusicdistribution.in/login" class="button">Login</a>
                 <a href="https://music.rnkmusicdistribution.in/signup" class="button">Sign Up</a>
-            </div>
             </div>
         </div>
     </nav>
@@ -477,12 +477,13 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile menu functionality
-            const menuBtn = document.getElementById('menu-btn');
+            const navToggle = document.querySelector('.nav-toggle');
             const navLinks = document.querySelector('.nav-links');
             
-            menuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
             });
+            
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
                 section.classList.add('fade-in');
